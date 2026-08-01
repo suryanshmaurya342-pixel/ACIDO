@@ -13,9 +13,9 @@
     <style>
         /* --- CORE VARIABLES --- */
         :root {
-            --bg-color: #070505; /* Deep Dark Black with a hint of brown */
-            --primary-red: #E6192B; /* Vibrant Red */
-            --primary-brown: #5C3A21; /* Luxury Dark Brown */
+            --bg-color: #070505;
+            --primary-red: #E6192B;
+            --primary-brown: #5C3A21;
             --accent-glow: rgba(230, 25, 43, 0.4);
             --glass-bg: rgba(92, 58, 33, 0.1);
             --glass-border: rgba(255, 255, 255, 0.05);
@@ -75,7 +75,7 @@
         .logo { font-size: 1.5rem; font-weight: 800; color: #fff; letter-spacing: 2px; }
         .logo span { color: var(--primary-red); }
         .nav-links a {
-            color: var(--text-main); text-decoration: none; margin-left: 30px;
+            color: var(--text-main); text-decoration: none; margin-left: 25px;
             font-size: 0.9rem; font-weight: 600; text-transform: uppercase; transition: var(--transition);
         }
         .nav-links a:hover { color: var(--primary-red); }
@@ -113,6 +113,57 @@
         .stat-card:hover { border-color: var(--primary-red); transform: translateY(-10px); }
         .stat-card h2 { font-size: 3.5rem; font-weight: 900; color: var(--primary-red); margin-bottom: 10px; }
         .stat-card p { font-size: 1.1rem; font-weight: 600; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; }
+
+        /* --- PORTFOLIO GALLERY STYLING --- */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .portfolio-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 16px;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: var(--transition);
+            position: relative;
+        }
+        .portfolio-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+        .portfolio-card:hover img {
+            transform: scale(1.05);
+        }
+        .portfolio-card:hover {
+            border-color: var(--primary-red);
+            box-shadow: 0 10px 30px rgba(230, 25, 43, 0.2);
+            transform: translateY(-8px);
+        }
+        .p-info {
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .p-info h3 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #fff;
+        }
+        .p-tag {
+            background: rgba(230, 25, 43, 0.15);
+            color: var(--primary-red);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 800;
+            text-transform: uppercase;
+        }
 
         /* --- CONTACT / HIRE ME FORM --- */
         .contact-container {
@@ -176,6 +227,7 @@
         <div class="nav-links">
             <a href="#home">Home</a>
             <a href="#about">About</a>
+            <a href="#portfolio">Portfolio</a>
             <a href="#hire">Hire Me</a>
         </div>
     </nav>
@@ -205,6 +257,23 @@
                 <h2>24h</h2>
                 <p>Super Fast Delivery</p>
             </div>
+        </div>
+    </section>
+
+    <!-- PORTFOLIO GALLERY SECTION -->
+    <section id="portfolio" class="section">
+        <h2 class="section-title reveal">Featured <span>Works</span></h2>
+        <div class="portfolio-grid">
+            <div class="portfolio-card reveal"><img src="1282.jpg" alt="Design"><div class="p-info"><h3>Free Fire Live</h3><span class="p-tag">Thumbnail</span></div></div>
+            <div class="portfolio-card reveal"><img src="1280.jpg" alt="Design"><div class="p-info"><h3>Burger Promo</h3><span class="p-tag">Poster</span></div></div>
+            <div class="portfolio-card reveal"><img src="1283.jpg" alt="Design"><div class="p-info"><h3>Starbucks Ad</h3><span class="p-tag">Poster</span></div></div>
+            <div class="portfolio-card reveal"><img src="1281.jpg" alt="Design"><div class="p-info"><h3>Free Fire C-Badge</h3><span class="p-tag">Thumbnail</span></div></div>
+            <div class="portfolio-card reveal"><img src="1239.jpg" alt="Design"><div class="p-info"><h3>CS Rank Push</h3><span class="p-tag">Thumbnail</span></div></div>
+            <div class="portfolio-card reveal"><img src="1285.jpg" alt="Design"><div class="p-info"><h3>3.7 Update</h3><span class="p-tag">Thumbnail</span></div></div>
+            <div class="portfolio-card reveal"><img src="1290.jpg" alt="Design"><div class="p-info"><h3>Gold to Grandmaster</h3><span class="p-tag">Thumbnail</span></div></div>
+            <div class="portfolio-card reveal"><img src="1292.jpg" alt="Design"><div class="p-info"><h3>BGMI Rank Push</h3><span class="p-tag">Thumbnail</span></div></div>
+            <div class="portfolio-card reveal"><img src="1261.jpg" alt="Design"><div class="p-info"><h3>GTA / Action</h3><span class="p-tag">Thumbnail</span></div></div>
+            <div class="portfolio-card reveal"><img src="1263.jpg" alt="Design"><div class="p-info"><h3>Gameplay Vibe</h3><span class="p-tag">Thumbnail</span></div></div>
         </div>
     </section>
 
@@ -247,7 +316,6 @@
 
     <script>
         document.addEventListener("DOMContentLoaded", () => {
-            // 1. Loader Logic (Hides after 1.5 seconds)
             setTimeout(() => {
                 const loader = document.getElementById('preloader');
                 loader.style.opacity = '0';
@@ -255,7 +323,6 @@
                 setTimeout(() => loader.style.display = 'none', 500);
             }, 1500);
 
-            // 2. Custom Cursor Logic (Desktop only)
             const dot = document.getElementById('cursor-dot');
             const outline = document.getElementById('cursor-outline');
             
@@ -263,15 +330,12 @@
                 window.addEventListener('mousemove', (e) => {
                     dot.style.left = e.clientX + 'px';
                     dot.style.top = e.clientY + 'px';
-                    
-                    // Delay for outline
                     setTimeout(() => {
                         outline.style.left = e.clientX + 'px';
                         outline.style.top = e.clientY + 'px';
                     }, 50);
                 });
 
-                // Hover effects for links and buttons
                 document.querySelectorAll('a, button, select, input, textarea').forEach(el => {
                     el.addEventListener('mouseenter', () => {
                         outline.style.width = '60px';
@@ -286,7 +350,6 @@
                 });
             }
 
-            // 3. Scroll Reveal Animation
             const observer = new IntersectionObserver((entries) => {
                 entries.forEach(entry => {
                     if(entry.isIntersecting) {
@@ -297,7 +360,6 @@
 
             document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-            // 4. Magnetic Button Effect
             document.querySelectorAll('.magnetic-el').forEach(btn => {
                 btn.addEventListener('mousemove', (e) => {
                     const rect = btn.getBoundingClientRect();
@@ -310,19 +372,14 @@
                 });
             });
 
-            // 5. WhatsApp Form Submission Handler
             document.getElementById('whatsapp-form').addEventListener('submit', (e) => {
-                e.preventDefault(); // Prevents page reload
-                
+                e.preventDefault();
                 const name = document.getElementById('name').value;
                 const service = document.getElementById('service').value;
                 const message = document.getElementById('message').value;
 
-                // Create the WhatsApp Message
                 const waMessage = `hey Acido sir,\n\nMy name is ${name}. I want to hire you for a ${service}.\n\nMessage: ${message}`;
                 const encodedMessage = encodeURIComponent(waMessage);
-                
-                // Open WhatsApp link in new tab
                 window.open(`https://wa.me/918127684953?text=${encodedMessage}`, '_blank');
             });
         });
